@@ -23,6 +23,7 @@ public class GaleriaDeArte {
         galeria.agregarSala(sala2);        
         galeria.agregarSala(sala3);
         
+        a
         
     }
 }
