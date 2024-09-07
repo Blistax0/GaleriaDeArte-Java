@@ -40,6 +40,30 @@ public class GaleriaDeArte {
                 System.out.println("La sala ha sido creada con exito (Presione"
                         + "ENTER para continuar...)");
             } 
+            
+            else if (opcion.equals("2")) {
+                System.out.println("Ingrese el nombre de la sala a modificar:");
+                String nombreSala = lector.readLine();
+                Sala sala = galeria.getSala(nombreSala);
+                
+                if (sala != null) {
+                    System.out.println("Ingrese el titulo de la obra: ");
+                    String titulo = lector.readLine();
+                    System.out.println("Ingrese el nombre del artista: ");
+                    String artista = lector.readLine();
+                    System.out.println("Ingrese el año del artista: ");
+                    int year = Integer.parseInt(lector.readLine());
+                    System.out.println();
+                    int precio = Integer.parseInt(lector.readLine());
+                    
+                    Obra nuevaObra = new Obra(titulo, artista, year, precio);
+                    sala.agregarObra(nuevaObra);
+                }
+                else {
+                    System.out.println("Sala no encontrada. (Presione ENTER "
+                            + "para continuar...)");
+                }
+            }
         }
     }
 }
