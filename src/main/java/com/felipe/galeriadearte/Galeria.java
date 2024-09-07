@@ -6,12 +6,15 @@ public class Galeria {
     private HashMap<String, Sala> SalasGaleria;
     
     public void Galeria(){
-        SalasGaleria = new HashMap<>();
+        this.SalasGaleria = new HashMap<>();
     }
     
     public void agregarSala(Sala sala){
         SalasGaleria.put(sala.getNombre(), sala);
     }
     
-//    public void mostrarGaleria()
+    public Sala getSala(String nombre) {
+        return SalasGaleria.get(nombre);
+    }    
+    
 }
