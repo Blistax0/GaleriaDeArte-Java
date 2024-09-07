@@ -3,9 +3,10 @@ package com.felipe.galeriadearte;
 import java.io.*;
 
 public class GaleriaDeArte {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException{
         
         Galeria galeria = new Galeria();
+        BufferedReader lector = new BufferedReader(new InputStreamReader(System.in));
         
         Sala sala1 = new Sala("Sala 1");
         sala1.agregarObra(new Obra("a", "autor a", 2000, 25000));
@@ -23,5 +24,22 @@ public class GaleriaDeArte {
         galeria.agregarSala(sala2);        
         galeria.agregarSala(sala3);
         
+        while (true) {
+            System.out.println("1. Agregar Sala");
+            System.out.println("2. Agregar obra a una sala");
+            System.out.println("3. Mostrar galeria");
+            System.out.println("4. Salir");
+            
+            String opcion = lector.readLine();
+            
+            if (opcion.equals("1")){
+                System.out.println("Ingrese el nombre de la nueva sala:");
+                String nombreSala = lector.readLine();
+                Sala nuevaSala = new Sala(nombreSala);
+                galeria.agregarSala(nuevaSala);
+                System.out.println("La sala ha sido creada con exito (Presione"
+                        + "ENTER para continuar...)");
+            } 
+        }
     }
 }
