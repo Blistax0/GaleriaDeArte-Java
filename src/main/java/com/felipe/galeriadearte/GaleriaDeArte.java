@@ -1,7 +1,6 @@
 package com.felipe.galeriadearte;
 
 import java.io.*;
-import java.util.*;
 
 public class GaleriaDeArte {
     public static void main(String[] args) throws IOException{
