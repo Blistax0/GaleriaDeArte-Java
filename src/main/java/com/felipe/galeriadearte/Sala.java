@@ -23,4 +23,17 @@ public class Sala {
         obras.add(obra);
     }
     
+    public void mostrarObras() {
+        if (obras.isEmpty()) {
+            System.out.println("No hay obras en esta sala.");
+        } 
+        else {
+            System.out.println("Obras en la sala " + nombre + ":");
+            for (Obra obra : obras) {
+                System.out.println(" - " + obra.getTitulo() + " de " 
+                        + obra.getArtista() + " (" + obra.getYear() + " -  $" + 
+                        obra.getPrecio() + ")");
+            }
+        }
+    }
 }
