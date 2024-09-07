@@ -1,6 +1,7 @@
 package com.felipe.galeriadearte;
 
 import java.io.*;
+import java.util.*;
 
 public class GaleriaDeArte {
     public static void main(String[] args) throws IOException{
@@ -68,7 +69,6 @@ public class GaleriaDeArte {
             else if (opcion.equals("3")) {
                 galeria.mostrarGaleria();
             }
-            
             else if (opcion.equals("4")){
                 break;
             }

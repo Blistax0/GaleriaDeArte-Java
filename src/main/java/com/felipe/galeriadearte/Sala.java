@@ -1,10 +1,11 @@
 package com.felipe.galeriadearte;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Sala {
     private String nombre;
-    private ArrayList<Obra> obras;
+    private List<Obra> obras;
     
     public Sala(String nombre) {
         this.nombre = nombre;

@@ -1,11 +1,12 @@
 package com.felipe.galeriadearte;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class Galeria {
-    private HashMap<String, Sala> salasGaleria;
+    private Map<String, Sala> salasGaleria;
     
-    public void Galeria(){
+    public Galeria(){
         this.salasGaleria = new HashMap<>();
     }
     
@@ -18,9 +19,14 @@ public class Galeria {
     }    
     
     public void mostrarGaleria(){
-        for (Sala sala : salasGaleria.values()){
+        if (salasGaleria.isEmpty()){
+            System.out.println("La galeria no tiene salas.");
+        }
+        else {
+            for (Sala sala : salasGaleria.values()){
             System.out.println("Sala: " + sala.getNombre());
             sala.mostrarObras();
+            }
         }
     }
 }
