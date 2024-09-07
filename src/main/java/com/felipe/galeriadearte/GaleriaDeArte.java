@@ -64,6 +64,17 @@ public class GaleriaDeArte {
                             + "para continuar...)");
                 }
             }
+            
+            else if (opcion.equals("3")) {
+                galeria.mostrarGaleria();
+            }
+            
+            else if (opcion.equals("4")){
+                break;
+            }
+            else {
+                System.out.println("Opción inválida...");
+            }
         }
     }
 }
