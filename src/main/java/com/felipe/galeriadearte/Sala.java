@@ -29,10 +29,10 @@ public class Sala {
             System.out.println("No hay obras en esta sala.");
         } 
         else {
-            System.out.println("Obras en la sala " + nombre + ":");
+            System.out.println("Obras en la sala '" + nombre + "':");
             for (Obra obra : obras) {
-                System.out.println(" - " + obra.getTitulo() + " de " 
-                        + obra.getArtista() + " (" + obra.getYear() + " -  $" + 
+                System.out.println(" - '" + obra.getTitulo() + "' de '" 
+                        + obra.getArtista() + "' (" + obra.getYear() + " -  $" + 
                         obra.getPrecio() + ")");
             }
         }

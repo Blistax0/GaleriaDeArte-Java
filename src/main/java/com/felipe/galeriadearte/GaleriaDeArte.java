@@ -9,16 +9,16 @@ public class GaleriaDeArte {
         BufferedReader lector = new BufferedReader(new InputStreamReader(System.in));
         
         Sala sala1 = new Sala("Sala 1");
-        sala1.agregarObra(new Obra("a", "autor a", 2000, 25000));
-        sala1.agregarObra(new Obra("b", "autor b", 2020, 259000));
+        sala1.agregarObra(new Obra("Pink Banana", "John Stronghead", 2000, 258000));
+        sala1.agregarObra(new Obra("Charly", "Rodrigo Wolff", 2020, 259000));
         
         Sala sala2 = new Sala("Sala 2");
-        sala2.agregarObra(new Obra("c", "autor c", 1987, 25098));
-        sala2.agregarObra(new Obra("d", "autor d", 1992, 259700));
+        sala2.agregarObra(new Obra("Slinky Cat", "Ernie Armstrong", 1987, 25098));
+        sala2.agregarObra(new Obra("Tag Boureau", "Vicente Lennon", 1992, 259700));
         
         Sala sala3 = new Sala("Sala 3");
-        sala3.agregarObra(new Obra("e", "autor e", 1886, 250898));
-        sala3.agregarObra(new Obra("f", "autor f", 1925, 259260));
+        sala3.agregarObra(new Obra("Baljeep", "Eric Sepulveda", 1886, 250898));
+        sala3.agregarObra(new Obra("The green donut", "Jonathan Panther", 1925, 259260));
         
         galeria.agregarSala(sala1);
         galeria.agregarSala(sala2);        
@@ -37,8 +37,7 @@ public class GaleriaDeArte {
                 String nombreSala = lector.readLine();
                 Sala nuevaSala = new Sala(nombreSala);
                 galeria.agregarSala(nuevaSala);
-                System.out.println("La sala ha sido creada con exito (Presione"
-                        + "ENTER para continuar...)");
+                System.out.println("La sala ha sido creada con éxito");
             } 
             
             else if (opcion.equals("2")) {
