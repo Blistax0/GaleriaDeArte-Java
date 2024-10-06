@@ -73,7 +73,6 @@ public class GaleriaDeArte {
             else {
                 System.out.println("Opción inválida...");
             }
-            a
         }
     }
 }
