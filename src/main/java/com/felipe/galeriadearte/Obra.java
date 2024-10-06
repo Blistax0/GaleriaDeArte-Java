@@ -5,14 +5,14 @@ public class Obra {
     private String artista;
     private int year;
     private int precio;
-    
+
     public Obra(String titulo, String artista, int year, int precio) {
         this.titulo = titulo;
         this.artista = artista;
         this.year = year;
         this.precio = precio;
     }
-    
+
     public String getTitulo() {
         return titulo;
     }
@@ -44,7 +44,8 @@ public class Obra {
     public void setPrecio(int precio) {
         this.precio = precio;
     }
-    
-    
-    
+
+    public void setPrecio(String precio) {
+        this.precio = Integer.parseInt(precio);
+    }
 }
