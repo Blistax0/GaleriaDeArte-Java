@@ -53,10 +53,10 @@ public class GaleriaDeArte {
                     System.out.println("Ingrese el año de la obra:");
                     int year = Integer.parseInt(lector.readLine());
                     System.out.println("Ingrese el precio de la obra (en formato numérico):");
-                    String precio = lector.readLine();  // precio es tipo String
+                    String precio = lector.readLine();
 
-                    Obra nuevaObra = new Obra(titulo, artista, year, 0); // Temporalmente set precio a 0
-                    nuevaObra.setPrecio(precio); // Sobrecarga del método setPrecio que acepta String
+                    Obra nuevaObra = new Obra(titulo, artista, year, 0); 
+                    nuevaObra.setPrecio(precio);
                     sala.agregarObra(nuevaObra);
                     System.out.println("La obra ha sido agregada.");
                 } else {
