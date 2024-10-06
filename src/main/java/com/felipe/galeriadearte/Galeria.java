@@ -18,6 +18,10 @@ public class Galeria {
         return salasGaleria.get(nombre);
     }    
     
+    public Map<String, Sala> getSalasGaleria() {
+        return salasGaleria;
+    }
+    
     public void mostrarGaleria(){
         if (salasGaleria.isEmpty()){
             System.out.println("La galeria no tiene salas.");
