@@ -54,4 +54,8 @@ public class Sala {
             System.out.println("No hay obras en esta sala dentro del rango de años especificado.");
         }
     }
+    
+    public List<Obra> getObras() {
+        return obras;
+    }
 }

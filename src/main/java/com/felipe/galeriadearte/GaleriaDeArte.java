@@ -6,6 +6,7 @@ public class GaleriaDeArte {
     public static void main(String[] args) throws IOException {
 
         Galeria galeria = new Galeria();
+        galeria.cargarDesdeArchivo("galeria.csv");
         BufferedReader lector = new BufferedReader(new InputStreamReader(System.in));
 
         Sala sala1 = new Sala("Sala 1");
@@ -94,5 +95,6 @@ public class GaleriaDeArte {
                 System.out.println("Opción inválida...");
             }
         }
+        galeria.guardarEnArchivo("galeria.csv");
     }
 }
