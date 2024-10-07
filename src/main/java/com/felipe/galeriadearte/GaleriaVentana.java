@@ -6,11 +6,11 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class GaleriaVentanaSwing extends JFrame {
+public class GaleriaVentana extends JFrame {
     private Galeria galeria;
     private JTextArea textArea;
 
-    public GaleriaVentanaSwing(Galeria galeria) {
+    public GaleriaVentana(Galeria galeria) {
         this.galeria = galeria;
 
         setTitle("Galería de Arte");
@@ -265,7 +265,7 @@ public class GaleriaVentanaSwing extends JFrame {
         galeria.agregarSala(sala2);
         galeria.agregarSala(sala3);
 
-        GaleriaVentanaSwing ventana = new GaleriaVentanaSwing(galeria);
+        GaleriaVentana ventana = new GaleriaVentana(galeria);
         ventana.setVisible(true);
     }
 }
