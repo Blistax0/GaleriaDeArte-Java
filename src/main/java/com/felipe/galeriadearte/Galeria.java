@@ -7,7 +7,7 @@ public class Galeria {
     private Map<String, Sala> salasGaleria;
     
     public Galeria(){
-        this.salasGaleria = new HashMap<>();
+        this.salasGaleria = new LinkedHashMap<>();
     }
     
     public void agregarSala(Sala sala){

@@ -215,7 +215,7 @@ public class GaleriaVentanaSwing extends JFrame {
 
     private void filtrarObras() {
         String criterio = JOptionPane.showInputDialog(this, "Ingrese el criterio para filtrar (artista, año o precio):");
-        String valor = JOptionPane.showInputDialog(this, "Ingrese el valor de filtrado:");
+        String valor = JOptionPane.showInputDialog(this, "Ingrese el valor de filtrado (Ej: Rodrigo Wolff - 1967 - 200000 (Poner uno de los datos)):");
 
         StringBuilder contenido = new StringBuilder();
         for (Sala sala : galeria.getSalasGaleria().values()) {
