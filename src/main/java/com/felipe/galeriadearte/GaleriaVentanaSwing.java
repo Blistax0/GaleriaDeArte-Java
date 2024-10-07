@@ -14,7 +14,7 @@ public class GaleriaVentanaSwing extends JFrame {
         this.galeria = galeria;
 
         setTitle("Galería de Arte");
-        setSize(500, 400);
+        setSize(600, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
@@ -26,7 +26,7 @@ public class GaleriaVentanaSwing extends JFrame {
         JPanel panelBotones = new JPanel();
         panelBotones.setLayout(new FlowLayout());
 
-        // boton mostrar galeria
+        // Botón para mostrar galería
         JButton botonMostrarGaleria = new JButton("Mostrar Galería");
         botonMostrarGaleria.addActionListener(new ActionListener() {
             @Override
@@ -36,7 +36,7 @@ public class GaleriaVentanaSwing extends JFrame {
         });
         panelBotones.add(botonMostrarGaleria);
 
-        // boton agregar sala
+        // Botón para agregar sala
         JButton botonAgregarSala = new JButton("Agregar Sala");
         botonAgregarSala.addActionListener(new ActionListener() {
             @Override
@@ -46,7 +46,7 @@ public class GaleriaVentanaSwing extends JFrame {
         });
         panelBotones.add(botonAgregarSala);
 
-        // boton agregar obra
+        // Botón para agregar obra
         JButton botonAgregarObra = new JButton("Agregar Obra");
         botonAgregarObra.addActionListener(new ActionListener() {
             @Override
@@ -55,6 +55,42 @@ public class GaleriaVentanaSwing extends JFrame {
             }
         });
         panelBotones.add(botonAgregarObra);
+
+        // Botón para filtrar obras
+        JButton botonFiltrar = new JButton("Filtrar Obras");
+        botonFiltrar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                filtrarObras();
+            }
+        });
+        panelBotones.add(botonFiltrar);
+
+        // Botón para eliminar obra
+        JButton botonEliminarObra = new JButton("Eliminar Obra");
+        botonEliminarObra.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                eliminarObra();
+            }
+        });
+        panelBotones.add(botonEliminarObra);
+
+        // Menú de edición
+        JMenuBar menuBar = new JMenuBar();
+        JMenu menuEdicion = new JMenu("Edición");
+        JMenuItem itemEditarObra = new JMenuItem("Editar Obra");
+
+        itemEditarObra.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                editarObra();
+            }
+        });
+
+        menuEdicion.add(itemEditarObra);
+        menuBar.add(menuEdicion);
+        setJMenuBar(menuBar);
 
         add(panelBotones, BorderLayout.SOUTH);
     }
@@ -84,8 +120,7 @@ public class GaleriaVentanaSwing extends JFrame {
             Sala nuevaSala = new Sala(nombreSala);
             galeria.agregarSala(nuevaSala);
             textArea.setText("Sala '" + nombreSala + "' agregada con éxito.");
-
-            // Guardar la galería en el archivo CSV
+            
             try {
                 galeria.guardarEnArchivo("galeria.csv");
             } catch (IOException e) {
@@ -98,19 +133,16 @@ public class GaleriaVentanaSwing extends JFrame {
     private void agregarObra() {
         String nombreSala = JOptionPane.showInputDialog(this, "Ingrese el nombre de la sala:");
         Sala sala = galeria.getSala(nombreSala);
-
         if (sala != null) {
             String tituloObra = JOptionPane.showInputDialog(this, "Ingrese el título de la obra:");
             String artistaObra = JOptionPane.showInputDialog(this, "Ingrese el nombre del artista:");
             String yearObra = JOptionPane.showInputDialog(this, "Ingrese el año de la obra:");
             String precioObra = JOptionPane.showInputDialog(this, "Ingrese el precio de la obra:");
-
             if (tituloObra != null && artistaObra != null && yearObra != null && precioObra != null) {
                 Obra nuevaObra = new Obra(tituloObra, artistaObra, Integer.parseInt(yearObra), Integer.parseInt(precioObra));
                 sala.agregarObra(nuevaObra);
                 textArea.setText("Obra '" + tituloObra + "' agregada a la sala '" + nombreSala + "'.");
 
-                // Guardar la galería en el archivo CSV
                 try {
                     galeria.guardarEnArchivo("galeria.csv");
                 } catch (IOException e) {
@@ -122,10 +154,98 @@ public class GaleriaVentanaSwing extends JFrame {
             JOptionPane.showMessageDialog(this, "Sala no encontrada.");
         }
     }
-    
-    
 
-    public static void main(String[] args)throws IOException{
+    private void editarObra() {
+        String nombreSala = JOptionPane.showInputDialog(this, "Ingrese el nombre de la sala:");
+        Sala sala = galeria.getSala(nombreSala);
+
+        if (sala != null) {
+            String tituloObra = JOptionPane.showInputDialog(this, "Ingrese el título de la obra a editar:");
+            Obra obra = sala.getObra(tituloObra);
+            if (obra != null) {
+                String nuevoTitulo = JOptionPane.showInputDialog(this, "Ingrese el nuevo título:", obra.getTitulo());
+                String nuevoArtista = JOptionPane.showInputDialog(this, "Ingrese el nuevo artista:", obra.getArtista());
+                String nuevoYear = JOptionPane.showInputDialog(this, "Ingrese el nuevo año:", obra.getYear());
+                String nuevoPrecio = JOptionPane.showInputDialog(this, "Ingrese el nuevo precio:", obra.getPrecio());
+
+                if (nuevoTitulo != null && nuevoArtista != null && nuevoYear != null && nuevoPrecio != null) {
+                    obra.setTitulo(nuevoTitulo);
+                    obra.setArtista(nuevoArtista);
+                    obra.setYear(Integer.parseInt(nuevoYear));
+                    obra.setPrecio(Integer.parseInt(nuevoPrecio));
+                    textArea.setText("Obra '" + tituloObra + "' editada con éxito.");
+                    try {
+                        galeria.guardarEnArchivo("galeria.csv");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        JOptionPane.showMessageDialog(this, "Error al guardar en el archivo CSV.");
+                    }
+                }
+            } else {
+                JOptionPane.showMessageDialog(this, "Obra no encontrada.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Sala no encontrada.");
+        }
+    }
+
+    private void eliminarObra() {
+        String nombreSala = JOptionPane.showInputDialog(this, "Ingrese el nombre de la sala:");
+        Sala sala = galeria.getSala(nombreSala);
+
+        if (sala != null) {
+            String tituloObra = JOptionPane.showInputDialog(this, "Ingrese el título de la obra a eliminar:");
+            Obra obra = sala.getObra(tituloObra);
+            if (obra != null) {
+                sala.eliminarObra(obra);
+                try {
+                    galeria.guardarEnArchivo("galeria.csv");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    JOptionPane.showMessageDialog(this, "Error al guardar en el archivo CSV.");
+                }
+                textArea.setText("Obra '" + tituloObra + "' eliminada con éxito.");
+            } else {
+                JOptionPane.showMessageDialog(this, "Obra no encontrada.");
+            }
+        } else {
+            JOptionPane.showMessageDialog(this, "Sala no encontrada.");
+        }
+    }
+
+    private void filtrarObras() {
+        String criterio = JOptionPane.showInputDialog(this, "Ingrese el criterio para filtrar (artista, año o precio):");
+        String valor = JOptionPane.showInputDialog(this, "Ingrese el valor de filtrado:");
+
+        StringBuilder contenido = new StringBuilder();
+        for (Sala sala : galeria.getSalasGaleria().values()) {
+            contenido.append("Sala: ").append(sala.getNombre()).append("\n");
+            for (Obra obra : sala.getObras()) {
+                boolean coincide = false;
+                switch (criterio.toLowerCase()) {
+                    case "artista":
+                        coincide = obra.getArtista().equalsIgnoreCase(valor);
+                        break;
+                    case "año":
+                        coincide = Integer.toString(obra.getYear()).equals(valor);
+                        break;
+                    case "precio":
+                        coincide = Integer.toString(obra.getPrecio()).equals(valor);
+                        break;
+                }
+                if (coincide) {
+                    contenido.append(" - '").append(obra.getTitulo()).append("' de '")
+                            .append(obra.getArtista()).append("' (")
+                            .append(obra.getYear()).append(" - $")
+                            .append(obra.getPrecio()).append(")\n");
+                }
+            }
+            contenido.append("\n");
+        }
+        textArea.setText(contenido.toString());
+    }
+
+    public static void main(String[] args) throws IOException {
         Galeria galeria = new Galeria();
         galeria.cargarDesdeArchivo("galeria.csv");
 

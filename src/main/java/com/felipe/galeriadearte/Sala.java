@@ -23,6 +23,10 @@ public class Sala {
     public void agregarObra(Obra obra) {
         obras.add(obra);
     }
+    
+    public List<Obra> getObras() {
+        return obras;
+    }
 
     public void mostrarObras() {
         if (obras.isEmpty()) {
@@ -55,7 +59,16 @@ public class Sala {
         }
     }
     
-    public List<Obra> getObras() {
-        return obras;
+    public Obra getObra(String titulo) {
+        for (Obra obra : obras) {
+            if (obra.getTitulo().equalsIgnoreCase(titulo)) {
+                return obra;
+            }
+        }
+        return null;
+    }
+
+    public void eliminarObra(Obra obra) {
+        obras.remove(obra);
     }
 }
