@@ -257,22 +257,26 @@ public class GaleriaVentana extends JFrame {
     public static void main(String[] args) throws IOException {
         Galeria galeria = new Galeria();
         galeria.cargarDesdeArchivo("galeria.csv");
-
-        Sala sala1 = new Sala("Sala 1");
-        sala1.agregarObra(new Obra("Pink Banana", "John Stronghead", 2000, 258000));
-        sala1.agregarObra(new Obra("Charly", "Rodrigo Wolff", 2020, 259000));
-
-        Sala sala2 = new Sala("Sala 2");
-        sala2.agregarObra(new Obra("Slinky Cat", "Ernie Armstrong", 1987, 25098));
-        sala2.agregarObra(new Obra("Tag Boureau", "Vicente Lennon", 1992, 259700));
-
-        Sala sala3 = new Sala("Sala 3");
-        sala3.agregarObra(new Obra("Baljeep", "Eric Sepulveda", 1886, 250898));
-        sala3.agregarObra(new Obra("The green donut", "Jonathan Panther", 1925, 259260));
-
-        galeria.agregarSala(sala1);
-        galeria.agregarSala(sala2);
-        galeria.agregarSala(sala3);
+        
+        //Inicializar estos datos SOLO si no se ha creado el archivo csv
+        //por primera vez, ya que cambian los valores si este ha sido
+        //modificado. Deberia de descargarse al momento de clonar desde github.
+        
+//        Sala sala1 = new Sala("Sala 1");
+//        sala1.agregarObra(new Obra("Pink Banana", "John Stronghead", 2000, 258000));
+//        sala1.agregarObra(new Obra("Charly", "Rodrigo Wolff", 2020, 259000));
+//
+//        Sala sala2 = new Sala("Sala 2");
+//        sala2.agregarObra(new Obra("Slinky Cat", "Ernie Armstrong", 1987, 25098));
+//        sala2.agregarObra(new Obra("Tag Boureau", "Vicente Lennon", 1992, 259700));
+//
+//        Sala sala3 = new Sala("Sala 3");
+//        sala3.agregarObra(new Obra("Baljeep", "Eric Sepulveda", 1886, 250898));
+//        sala3.agregarObra(new Obra("The green donut", "Jonathan Panther", 1925, 259260));
+//
+//        galeria.agregarSala(sala1);
+//        galeria.agregarSala(sala2);
+//        galeria.agregarSala(sala3);
 
         GaleriaVentana ventana = new GaleriaVentana(galeria);
         ventana.setVisible(true);

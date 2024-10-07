@@ -33,6 +33,26 @@ public class Galeria {
             }
         }
     }
+    
+    public void mostrarObras(String artista) {
+        boolean hayObras = false;
+        for (Sala sala : salasGaleria.values()) {
+            for (Obra obra : sala.getObras()) {
+                if (obra.getArtista().equalsIgnoreCase(artista)) {
+                    if (!hayObras) {
+                        System.out.println("Obras del artista '" + artista + "' en la galería:");
+                        hayObras = true;
+                    }
+                    System.out.println(" - '" + obra.getTitulo() + "' de '" 
+                            + obra.getArtista() + "' en la sala '" + sala.getNombre() + "' (" 
+                            + obra.getYear() + " -  $" + obra.getPrecio() + ")");
+                }
+            }
+        }
+        if (!hayObras) {
+            System.out.println("No hay obras del artista '" + artista + "' en la galería.");
+        }
+    }
 
     public void guardarEnArchivo(String nombreArchivo) throws IOException {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(nombreArchivo))) {

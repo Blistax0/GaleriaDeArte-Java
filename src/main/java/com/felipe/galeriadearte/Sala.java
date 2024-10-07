@@ -27,10 +27,23 @@ public class Sala {
     public List<Obra> getObras() {
         return obras;
     }
+    
+    public Obra getObra(String titulo) {
+        for (Obra obra : obras) {
+            if (obra.getTitulo().equalsIgnoreCase(titulo)) {
+                return obra;
+            }
+        }
+        return null;
+    }
+
+    public void eliminarObra(Obra obra) {
+        obras.remove(obra);
+    }
 
     public void mostrarObras() {
         if (obras.isEmpty()) {
-            System.out.println("No hay obras en esta sala.");
+            System.out.println("No hay obras en esta sala...");
         } else {
             System.out.println("Obras en la sala '" + nombre + "':");
             for (Obra obra : obras) {
@@ -55,20 +68,7 @@ public class Sala {
             }
         }
         if (!hayObras) {
-            System.out.println("No hay obras en esta sala dentro del rango de años especificado.");
+            System.out.println("No hay obras en esta sala dentro del rango de años especificado...");
         }
-    }
-    
-    public Obra getObra(String titulo) {
-        for (Obra obra : obras) {
-            if (obra.getTitulo().equalsIgnoreCase(titulo)) {
-                return obra;
-            }
-        }
-        return null;
-    }
-
-    public void eliminarObra(Obra obra) {
-        obras.remove(obra);
     }
 }
