@@ -65,18 +65,18 @@ public class GaleriaVentana extends JFrame {
             }
         });
         panelBotones.add(botonFiltrar);
-        
-        //boton editar obra
+
+        // boton editar obra
         JButton botonEditarObra = new JButton("Editar Obra");
-        botonEditarObra.addActionListener(new ActionListener(){
+        botonEditarObra.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 editarObra();
             }
         });
         panelBotones.add(botonEditarObra);
-        
-        // boton eliminar 
+
+        // boton eliminar
         JButton botonEliminarObra = new JButton("Eliminar Obra");
         botonEliminarObra.addActionListener(new ActionListener() {
             @Override
@@ -112,10 +112,7 @@ public class GaleriaVentana extends JFrame {
             for (Sala sala : galeria.getSalasGaleria().values()) {
                 contenido.append("Sala: ").append(sala.getNombre()).append("\n");
                 for (Obra obra : sala.getObras()) {
-                    contenido.append(" - '").append(obra.getTitulo()).append("' de '")
-                            .append(obra.getArtista()).append("' (")
-                            .append(obra.getYear()).append(" - $")
-                            .append(obra.getPrecio()).append(")\n");
+                    contenido.append(obra.getDetalles()).append("\n"); // Se usa el método sobrescrito
                 }
                 contenido.append("\n");
             }

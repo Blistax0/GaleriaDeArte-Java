@@ -48,4 +48,8 @@ public class Obra {
     public void setPrecio(String precio) {
         this.precio = Integer.parseInt(precio);
     }
+    
+    public String getDetalles() {
+        return "Obra: '" + titulo + "' de '" + artista + "' (" + year + " - $" + precio + ")";
+    }
 }
