@@ -14,7 +14,7 @@ public class GaleriaVentana extends JFrame {
         this.galeria = galeria;
 
         setTitle("Galería de Arte");
-        setSize(600, 400);
+        setSize(705, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
@@ -26,7 +26,7 @@ public class GaleriaVentana extends JFrame {
         JPanel panelBotones = new JPanel();
         panelBotones.setLayout(new FlowLayout());
 
-        // Botón para mostrar galería
+        // boton mostrar galeria
         JButton botonMostrarGaleria = new JButton("Mostrar Galería");
         botonMostrarGaleria.addActionListener(new ActionListener() {
             @Override
@@ -36,7 +36,7 @@ public class GaleriaVentana extends JFrame {
         });
         panelBotones.add(botonMostrarGaleria);
 
-        // Botón para agregar sala
+        // boton agregar sala
         JButton botonAgregarSala = new JButton("Agregar Sala");
         botonAgregarSala.addActionListener(new ActionListener() {
             @Override
@@ -46,7 +46,7 @@ public class GaleriaVentana extends JFrame {
         });
         panelBotones.add(botonAgregarSala);
 
-        // Botón para agregar obra
+        // boton agregar obra
         JButton botonAgregarObra = new JButton("Agregar Obra");
         botonAgregarObra.addActionListener(new ActionListener() {
             @Override
@@ -56,7 +56,7 @@ public class GaleriaVentana extends JFrame {
         });
         panelBotones.add(botonAgregarObra);
 
-        // Botón para filtrar obras
+        // boton filtrar obras
         JButton botonFiltrar = new JButton("Filtrar Obras");
         botonFiltrar.addActionListener(new ActionListener() {
             @Override
@@ -65,8 +65,18 @@ public class GaleriaVentana extends JFrame {
             }
         });
         panelBotones.add(botonFiltrar);
-
-        // Botón para eliminar obra
+        
+        //boton editar obra
+        JButton botonEditarObra = new JButton("Editar Obra");
+        botonEditarObra.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                editarObra();
+            }
+        });
+        panelBotones.add(botonEditarObra);
+        
+        // boton eliminar 
         JButton botonEliminarObra = new JButton("Eliminar Obra");
         botonEliminarObra.addActionListener(new ActionListener() {
             @Override
@@ -76,21 +86,20 @@ public class GaleriaVentana extends JFrame {
         });
         panelBotones.add(botonEliminarObra);
 
-        // Menú de edición
-        JMenuBar menuBar = new JMenuBar();
-        JMenu menuEdicion = new JMenu("Edición");
-        JMenuItem itemEditarObra = new JMenuItem("Editar Obra");
-
-        itemEditarObra.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                editarObra();
-            }
-        });
-
-        menuEdicion.add(itemEditarObra);
-        menuBar.add(menuEdicion);
-        setJMenuBar(menuBar);
+//        JMenuBar menuBar = new JMenuBar();
+//        JMenu menuEdicion = new JMenu("Edición");
+//        JMenuItem itemEditarObra = new JMenuItem("Editar Obra");
+//
+//        itemEditarObra.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                editarObra();
+//            }
+//        });
+//
+//        menuEdicion.add(itemEditarObra);
+//        menuBar.add(menuEdicion);
+//        setJMenuBar(menuBar);
 
         add(panelBotones, BorderLayout.SOUTH);
     }
